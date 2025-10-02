@@ -2,9 +2,9 @@
   {
     "id": 10342,
     "filename": "beach.jpg",
-    "title": "sunny beach",
+    "title": "Very Sunny Beach",
     "date": "2025-08-01T23:45:00",
-    "description": "Relaxing day by the sea with golden sands.",
+    "description": "This is a picture of a very sunny beach",
     "resolution": "1920x1080",
     "albums": [
       201,
@@ -14,8 +14,10 @@
       "beach",
       "summer",
       "ocean",
-      "cricket"
-    ]
+      "cricket",
+      "mountain"
+    ],
+    "owner": 1
   },
   {
     "id": 54781,
@@ -31,7 +33,8 @@
       "mountain",
       "snow",
       "winter"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 83927,
@@ -48,7 +51,8 @@
       "forest",
       "mist",
       "trees"
-    ]
+    ],
+    "owner": 3
   },
   {
     "id": 29475,
@@ -64,7 +68,8 @@
       "city",
       "night",
       "skyline"
-    ]
+    ],
+    "owner": 1
   },
   {
     "id": 76291,
@@ -80,7 +85,8 @@
       "desert",
       "sand",
       "sun"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 15483,
@@ -97,7 +103,8 @@
       "lake",
       "reflection",
       "nature"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 94712,
@@ -113,7 +120,8 @@
       "bridge",
       "river",
       "historic"
-    ]
+    ],
+    "owner": 3
   },
   {
     "id": 67124,
@@ -129,7 +137,8 @@
       "garden",
       "flowers",
       "spring"
-    ]
+    ],
+    "owner": 1
   },
   {
     "id": 43562,
@@ -145,7 +154,8 @@
       "cat",
       "pet",
       "animal"
-    ]
+    ],
+    "owner": 1
   },
   {
     "id": 82391,
@@ -161,7 +171,8 @@
       "dog",
       "park",
       "pet"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 25498,
@@ -178,7 +189,8 @@
       "waterfall",
       "river",
       "nature"
-    ]
+    ],
+    "owner": 3
   },
   {
     "id": 99813,
@@ -194,7 +206,8 @@
       "island",
       "sea",
       "travel"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 34567,
@@ -210,7 +223,8 @@
       "road",
       "travel",
       "landscape"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 57283,
@@ -226,7 +240,8 @@
       "castle",
       "historic",
       "architecture"
-    ]
+    ],
+    "owner": 3
   },
   {
     "id": 61342,
@@ -242,7 +257,8 @@
       "market",
       "people",
       "culture"
-    ]
+    ],
+    "owner": 1
   },
   {
     "id": 46718,
@@ -259,7 +275,8 @@
       "cliff",
       "ocean",
       "landscape"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 73109,
@@ -275,7 +292,8 @@
       "cave",
       "rocks",
       "explore"
-    ]
+    ],
+    "owner": 2
   },
   {
     "id": 82941,
@@ -292,14 +310,15 @@
       "river",
       "valley",
       "water"
-    ]
+    ],
+    "owner": 3
   },
   {
     "id": 90215,
     "filename": "temple.jpg",
-    "title": "Sacred Temple",
+    "title": "Checking",
     "date": "2023-02-02T05:35:00",
-    "description": "An ancient temple surrounded by jungle.",
+    "description": "I am trying if this works",
     "resolution": "2048x1365",
     "albums": [
       208,
@@ -308,8 +327,10 @@
     "tags": [
       "temple",
       "ancient",
-      "culture"
-    ]
+      "culture",
+      "testing"
+    ],
+    "owner": 1
   },
   {
     "id": 78452,
@@ -326,6 +347,7 @@
       "sunset",
       "ocean",
       "sky"
-    ]
+    ],
+    "owner": 1
   }
 ]
