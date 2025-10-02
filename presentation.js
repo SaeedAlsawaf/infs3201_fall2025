@@ -7,6 +7,15 @@
 const prompt = require("prompt-sync")()
 const business = require("./business")
 
+/**
+ * Runs the main interactive console program for user login and managing photos.
+ * Allows the logged-in user to find photos, update photo details, list album photos, tag photos, or exit.
+ *
+ * This function uses prompts to get user input and displays results in the console.
+ *
+ * @returns {Promise<void>} - Resolves when the user chooses to exit.
+ */
+
 async function assignment2() {
     console.log("===== LOGIN =====")
     let loggedInUser = null

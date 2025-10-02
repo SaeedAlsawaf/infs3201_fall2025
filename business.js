@@ -5,6 +5,13 @@
 
 const persistence = require("./persistence")
 
+/**
+ * Logs in a user by checking if the provided username and password match any user in the database.
+ *
+ * @param {string} username - The username of the user trying to log in.
+ * @param {string} password - The password of the user trying to log in.
+ * @returns {Promise<Object|null>} - Returns the user object if credentials match, otherwise returns null.
+ */
 
 async function login(username, password) {
     let allUsers = await persistence.readJson("users.json")
@@ -16,7 +23,16 @@ async function login(username, password) {
     return null
 }
 
-
+/**
+ * Finds a photo by its ID and checks if the logged-in user has permission to view it.
+ *
+ * @param {string} photoId - The ID of the photo to find.
+ * @param {string} loggedInUserId - The ID of the user trying to access the photo.
+ * @returns {Promise<Object>} - Returns an object with a `found` flag and either a `photo` object or a `reason` for failure.
+ *   - `{ found: true, photo: Object }` if the photo is found and the user has access.
+ *   - `{ found: false, reason: 'accessDenied' }` if the user does not own the photo.
+ *   - `{ found: false, reason: 'notFound' }` if the photo with the given ID does not exist.
+ */
 async function findPhoto(photoId, loggedInUserId) {
     let allPhotos = await persistence.readJson("photos.json")
     for (let photo of allPhotos) {
@@ -30,6 +46,15 @@ async function findPhoto(photoId, loggedInUserId) {
     return { found: false, reason: "notFound" }
 }
 
+/**
+ * Retrieves detailed information about a photo, including its albums and other metadata, if the user has permission to view it.
+ *
+ * @param {string} photoId - The ID of the photo to show details for.
+ * @param {string} loggedInUserId - The ID of the user requesting the photo details.
+ * @returns {Promise<Object>} - Returns an object with the photo's details or a failure reason.
+ *   - `{ found: true, filename: string, title: string, date: string, albums: string, tags: Array }` if the photo is found and the user has access.
+ *   - `{ found: false, reason: 'accessDenied' }` or `{ found: false, reason: 'notFound' }` if the photo is not found or the user does not have access.
+ */
 
 async function showDetails(photoId, loggedInUserId) {
     let result = await findPhoto(photoId, loggedInUserId)
@@ -56,6 +81,19 @@ async function showDetails(photoId, loggedInUserId) {
     }
 }
 
+/**
+ * Updates the title and/or description of a photo if the logged-in user is the owner of the photo.
+ *
+ * @param {string} photoId - The ID of the photo to update.
+ * @param {string} newTitle - The new title for the photo (optional).
+ * @param {string} newDescription - The new description for the photo (optional).
+ * @param {string} loggedInUserId - The ID of the user requesting the update.
+ * @returns {Promise<Object>} - Returns an object with the update status.
+ *   - `{ found: true, updated: true }` if the photo is updated successfully.
+ *   - `{ found: true, updated: false }` if no changes were made (no new title or description).
+ *   - `{ found: false, reason: 'notFound' }` if the photo is not found.
+ *   - `{ found: false, reason: 'accessDenied' }` if the user does not own the photo.
+ */
 
 async function updatePhoto(photoId, newTitle, newDescription, loggedInUserId) {
     let allPhotos = await persistence.readJson("photos.json")
@@ -80,6 +118,15 @@ async function updatePhoto(photoId, newTitle, newDescription, loggedInUserId) {
     return { found: true, updated: false }
 }
 
+/**
+ * Retrieves a list of photos belonging to a specified album for the logged-in user.
+ *
+ * @param {string} albumTitle - The title of the album to search for.
+ * @param {string} loggedInUserId - The ID of the user requesting the album list.
+ * @returns {Promise<Object>} - Returns an object with the result.
+ *   - `{ found: true, rows: string[] }` where each row contains photo filename, resolution, and tags separated by commas.
+ *   - `{ found: false }` if the album with the given title does not exist.
+ */
 
 async function albumList(albumTitle, loggedInUserId) {
     let allPhotos = await persistence.readJson("photos.json")
@@ -110,6 +157,18 @@ async function albumList(albumTitle, loggedInUserId) {
     return { found: true, rows }
 }
 
+/**
+ * Adds a new tag to a photo if the logged-in user is the owner and the tag is not already present.
+ *
+ * @param {string} photoId - The ID of the photo to tag.
+ * @param {string} tag - The tag to add to the photo.
+ * @param {string} loggedInUserId - The ID of the user adding the tag.
+ * @returns {Promise<Object>} - Returns an object describing the result:
+ *   - `{ found: true, added: true }` if the tag was successfully added.
+ *   - `{ found: true, added: false, reason: 'duplicate' }` if the tag already exists on the photo.
+ *   - `{ found: false, reason: 'notFound' }` if the photo does not exist.
+ *   - `{ found: false, reason: 'accessDenied' }` if the user does not own the photo.
+ */
 
 async function tagPhoto(photoId, tag, loggedInUserId) {
     let allPhotos = await persistence.readJson("photos.json")
